@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MobileNet Demo</title>
+    <title>MobileNet Demo (Imágenes y Videos)</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -11,11 +11,11 @@
         margin: 0 auto;
         padding: 20px;
       }
-      #img-container {
+      #media-container {
         margin: 20px 0;
         text-align: center;
       }
-      #img {
+      #media-element {
         max-width: 100%;
         max-height: 400px;
         display: block;
@@ -59,19 +59,43 @@
         color: #666;
         font-style: italic;
       }
+      .tab-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+      .tab-button {
+        background: #ddd;
+        color: #333;
+      }
+      .tab-button.active {
+        background: #4285f4;
+        color: white;
+      }
     </style>
   </head>
   <body>
     <h1>TensorFlow.js MobileNet Demo</h1>
 
-    <div class="button-container">
-      <button id="load-sample">Cargar imagen de muestra</button>
-      <button id="upload-btn">Subir tu propia imagen</button>
-      <input type="file" id="file-input" accept="image/*" />
+    <div class="tab-buttons">
+      <button id="image-tab" class="tab-button active">Modo Imagen</button>
+      <button id="video-tab" class="tab-button">Modo Video</button>
     </div>
 
-    <div id="img-container">
-      <img id="img" src="" crossorigin="anonymous" />
+    <div class="button-container">
+      <button id="load-sample">Cargar muestra</button>
+      <button id="upload-btn">Subir archivo</button>
+      <input type="file" id="file-input" accept="image/*,video/*" />
+    </div>
+
+    <div id="media-container">
+      <img id="media-element" style="display: none" crossorigin="anonymous" />
+      <video
+        id="video-element"
+        style="display: none"
+        crossorigin="anonymous"
+        muted
+      ></video>
     </div>
 
     <div id="results">
