@@ -1,4 +1,4 @@
-// Elementos del DOM
+
 const mediaElement = document.getElementById('media-element');
 const videoElement = document.getElementById('video-element');
 const predictionsElement = document.getElementById('predictions');
@@ -14,13 +14,11 @@ const imageUrlContainer = document.getElementById('image-url-container');
 const imageUrlInput = document.getElementById('image-url');
 const loadImageUrlBtn = document.getElementById('load-image-url');
 
-// Configuración del modelo
 const modelConfig = { version: 2, alpha: 1.0 };
 let model;
 let isVideoMode = false;
 let videoInterval;
 
-// Cargar el modelo
 async function loadModel() {
     try {
         predictionsElement.innerHTML = '<div class="loading">Cargando modelo, por favor espere...</div>';
@@ -31,7 +29,6 @@ async function loadModel() {
     }
 }
 
-// Clasificar
 async function classifyFrame() {
     if (!model) return;
     try {
@@ -42,7 +39,6 @@ async function classifyFrame() {
     }
 }
 
-// Mostrar resultados
 function displayPredictions(predictions) {
     predictionsElement.innerHTML = predictions.map(p => `
         <div class="prediction">
@@ -52,7 +48,6 @@ function displayPredictions(predictions) {
     `).join('');
 }
 
-// Cambiar modo
 function setMode(videoMode) {
     isVideoMode = videoMode;
     imageTabBtn.classList.toggle('active', !videoMode);
@@ -67,13 +62,11 @@ function setMode(videoMode) {
     predictionsElement.innerHTML = `<div class="loading">Seleccione un ${videoMode ? 'video' : 'imagen'} o ingrese una URL.</div>`;
 }
 
-// Clasificar video
 function startVideoClassification() {
     if (videoInterval) clearInterval(videoInterval);
     videoInterval = setInterval(() => classifyFrame(), 1000);
 }
 
-// Cargar video desde URL
 function loadVideoFromUrl(url) {
     if (!url) return;
     try {
@@ -94,7 +87,6 @@ function loadVideoFromUrl(url) {
     }
 }
 
-// Cargar imagen desde URL
 function loadImageFromUrl(url) {
     if (!url) return;
     try {
@@ -106,7 +98,6 @@ function loadImageFromUrl(url) {
     }
 }
 
-// Eventos
 loadSampleBtn.addEventListener('click', () => {
     if (isVideoMode) {
         videoElement.src = './assets/video-prueba.mp4';
@@ -173,7 +164,6 @@ videoElement.addEventListener('play', () => {
     if (isVideoMode) startVideoClassification();
 });
 
-// Iniciar
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof tf !== 'undefined' && typeof mobilenet !== 'undefined') {
         loadModel();
@@ -181,5 +171,5 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionsElement.innerHTML = '<div class="error">Error: TensorFlow.js no se cargó correctamente</div>';
     }
 
-    setMode(false); // Modo inicial: Imagen
+    setMode(false);
 });
