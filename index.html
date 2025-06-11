@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MobileNet Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      #img-container {
+        margin: 20px 0;
+        text-align: center;
+      }
+      #img {
+        max-width: 100%;
+        max-height: 400px;
+        display: block;
+        margin: 0 auto;
+      }
+      #results {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 5px;
+      }
+      .prediction {
+        margin: 5px 0;
+        padding: 5px;
+        background: white;
+        border-radius: 3px;
+      }
+      button {
+        padding: 10px 15px;
+        background: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background: #3367d6;
+      }
+      #file-input {
+        display: none;
+      }
+      .button-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .error {
+        color: red;
+      }
+      .loading {
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TensorFlow.js MobileNet Demo</h1>
+
+    <div class="button-container">
+      <button id="load-sample">Cargar imagen de muestra</button>
+      <button id="upload-btn">Subir tu propia imagen</button>
+      <input type="file" id="file-input" accept="image/*" />
+    </div>
+
+    <div id="img-container">
+      <img id="img" src="" crossorigin="anonymous" />
+    </div>
+
+    <div id="results">
+      <h3>Resultados:</h3>
+      <div id="predictions" class="loading">
+        Cargando modelo, por favor espere...
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
