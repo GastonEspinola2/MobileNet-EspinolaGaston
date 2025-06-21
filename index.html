@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MobileNet Demo (Imágenes y Videos)</title>
+    <title>MobileNet Demo (Imágenes, Videos y Cámara)</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -15,11 +15,11 @@
         margin: 20px 0;
         text-align: center;
       }
-      #media-element,
-      #video-element {
+      img,
+      video {
         max-width: 100%;
         max-height: 400px;
-        display: block;
+        display: none;
         margin: 0 auto;
         border-radius: 8px;
         background: black;
@@ -95,6 +95,7 @@
     <div class="tab-buttons">
       <button id="image-tab" class="tab-button active">Modo Imagen</button>
       <button id="video-tab" class="tab-button">Modo Video</button>
+      <button id="camera-tab" class="tab-button">Modo Cámara</button>
     </div>
 
     <div class="button-container">
@@ -105,34 +106,22 @@
 
     <div id="image-url-container">
       <div class="url-input-container">
-        <input
-          type="text"
-          id="image-url"
-          placeholder="Ingresa URL de imagen (jpg, png, webp)"
-        />
+        <input type="text" id="image-url" placeholder="Ingresa URL de imagen" />
         <button id="load-image-url">Cargar Imagen</button>
       </div>
     </div>
 
     <div id="video-url-container" style="display: none">
       <div class="url-input-container">
-        <input
-          type="text"
-          id="video-url"
-          placeholder="Ingresa URL de video (mp4, webm)"
-        />
-        <button id="load-url">Cargar URL</button>
+        <input type="text" id="video-url" placeholder="Ingresa URL de video" />
+        <button id="load-url">Cargar Video</button>
       </div>
     </div>
 
     <div id="media-container">
       <img id="media-element" crossorigin="anonymous" />
-      <video
-        id="video-element"
-        style="display: none"
-        crossorigin="anonymous"
-        muted
-      ></video>
+      <video id="video-element" muted crossorigin="anonymous"></video>
+      <video id="camera-element" autoplay muted playsinline></video>
     </div>
 
     <div id="results">
